@@ -53,6 +53,7 @@ custom:
 	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} hadoop-scraper
 
 customHadoopOnly:
+	docker-compose up -d
 	docker build -t hadoop-scraper ./scraper
 	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} hadoop-scraper hdfs dfs -mkdir -p /data/
 	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} hadoop-scraper hdfs dfs -copyFromLocal /scraper/ /data/
